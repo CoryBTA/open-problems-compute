@@ -65,7 +65,7 @@ jobs:
           git fetch origin results || true
           if git rev-parse -q --verify origin/results >/dev/null; then git checkout -f -B results origin/results; else git checkout -f -B results origin/main; fi
           tar xf /tmp/out.tar
-          git add -- $(cat /tmp/out.txt)
+          while IFS= read -r f; do git add -- "$f"; done < /tmp/out.txt
           git commit -m "compute results: $JOB run ${{ github.run_id }}" || exit 0
           git push origin results
       - name: continue in a new run
