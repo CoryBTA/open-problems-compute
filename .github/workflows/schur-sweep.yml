@@ -70,7 +70,7 @@ jobs:
           path: research/schur-structured/out/
           if-no-files-found: warn
   merge:
-    needs: sweep
+    needs: [calibrate, sweep]
     if: always() && needs.calibrate.result == 'success'
     runs-on: ubuntu-latest
     permissions:
