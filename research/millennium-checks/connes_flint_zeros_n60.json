@@ -1,0 +1,384 @@
+{
+ "n_basis": 60,
+ "prec_bits": 200,
+ "runs": [
+  {
+   "X": 13,
+   "n_basis": 60,
+   "lowest_eig": 5.716118773947969e-15,
+   "seconds": 0.6,
+   "zeros": [
+    {
+     "k": 1,
+     "double_mellin_zero": 14.134725141734704,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[1.0569e-8 +/- 1.35e-13]",
+     "F_hi": "[-1.0569e-8 +/- 1.36e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 9.957130342809074e-60,
+     "true_zero": "14.134725141734693790",
+     "abs_diff_double": 8.881784197001252e-15
+    },
+    {
+     "k": 2,
+     "double_mellin_zero": 21.022039638771542,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-7.5575e-9 +/- 5.00e-14]",
+     "F_hi": "[7.5574e-9 +/- 4.87e-14]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425708768818e-59,
+     "true_zero": "21.022039638771554993",
+     "abs_diff_double": 1.4210854715202004e-14
+    },
+    {
+     "k": 3,
+     "double_mellin_zero": 25.010857580145686,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[2.4239e-9 +/- 4.58e-14]",
+     "F_hi": "[-2.4239e-9 +/- 4.59e-14]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425701350406e-59,
+     "true_zero": "25.010857580145688763",
+     "abs_diff_double": 3.552713678800501e-15
+    },
+    {
+     "k": 4,
+     "double_mellin_zero": 30.424876125860003,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-2.1444e-10 +/- 3.16e-15]",
+     "F_hi": "[2.1444e-10 +/- 2.37e-15]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.9914257347332612e-59,
+     "true_zero": "30.424876125859513210",
+     "abs_diff_double": 4.902744876744691e-13
+    },
+    {
+     "k": 5,
+     "double_mellin_zero": 32.93506158773998,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[6.2271e-11 +/- 1.52e-16]",
+     "F_hi": "[-6.2271e-11 +/- 2.58e-16]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 3.982790749761836e-59,
+     "true_zero": "32.935061587739189691",
+     "abs_diff_double": 7.887024366937112e-13
+    }
+   ]
+  },
+  {
+   "X": 17,
+   "n_basis": 60,
+   "lowest_eig": 1.5827569303193517e-15,
+   "seconds": 0.6,
+   "zeros": [
+    {
+     "k": 1,
+     "double_mellin_zero": 14.13472514173468,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-3.5537e-8 +/- 4.37e-13]",
+     "F_hi": "[3.5537e-8 +/- 4.41e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 9.957130342809074e-60,
+     "true_zero": "14.134725141734693790",
+     "abs_diff_double": 1.4210854715202004e-14
+    },
+    {
+     "k": 2,
+     "double_mellin_zero": 21.022039638771552,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-3.0251e-8 +/- 7.45e-14]",
+     "F_hi": "[3.0251e-8 +/- 7.53e-14]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425708768818e-59,
+     "true_zero": "21.022039638771554993",
+     "abs_diff_double": 3.552713678800501e-15
+    },
+    {
+     "k": 3,
+     "double_mellin_zero": 25.010857580145686,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[1.1332e-8 +/- 3.50e-13]",
+     "F_hi": "[-1.1332e-8 +/- 3.47e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425701350406e-59,
+     "true_zero": "25.010857580145688763",
+     "abs_diff_double": 3.552713678800501e-15
+    },
+    {
+     "k": 4,
+     "double_mellin_zero": 30.424876125862315,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-5.2427e-10 +/- 3.95e-15]",
+     "F_hi": "[5.2427e-10 +/- 3.94e-15]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.9914257347332612e-59,
+     "true_zero": "30.424876125859513210",
+     "abs_diff_double": 2.8030910925735952e-12
+    },
+    {
+     "k": 5,
+     "double_mellin_zero": 32.935061587986546,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[5.4512e-11 +/- 1.62e-16]",
+     "F_hi": "[-5.4512e-11 +/- 1.18e-16]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 3.982790749761836e-59,
+     "true_zero": "32.935061587739189691",
+     "abs_diff_double": 2.473541371728061e-10
+    }
+   ]
+  },
+  {
+   "X": 23,
+   "n_basis": 60,
+   "lowest_eig": -8.644554427597755e-15,
+   "seconds": 0.5,
+   "zeros": [
+    {
+     "k": 1,
+     "double_mellin_zero": 14.134725141734702,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[6.0817e-8 +/- 3.11e-13]",
+     "F_hi": "[-6.0817e-8 +/- 3.05e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 9.957130342809074e-60,
+     "true_zero": "14.134725141734693790",
+     "abs_diff_double": 7.105427357601002e-15
+    },
+    {
+     "k": 2,
+     "double_mellin_zero": 21.02203963877156,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[3.9021e-8 +/- 4.20e-13]",
+     "F_hi": "[-3.9021e-8 +/- 4.23e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425708768818e-59,
+     "true_zero": "21.022039638771554993",
+     "abs_diff_double": 3.552713678800501e-15
+    },
+    {
+     "k": 3,
+     "double_mellin_zero": 25.010857580145707,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-1.5257e-8 +/- 3.38e-13]",
+     "F_hi": "[1.5257e-8 +/- 3.39e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425701350406e-59,
+     "true_zero": "25.010857580145688763",
+     "abs_diff_double": 1.7763568394002505e-14
+    },
+    {
+     "k": 4,
+     "double_mellin_zero": 30.424876125788934,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[1.9166e-10 +/- 7.20e-16]",
+     "F_hi": "[-1.9166e-10 +/- 8.58e-16]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.9914257347332612e-59,
+     "true_zero": "30.424876125859513210",
+     "abs_diff_double": 7.057820994305075e-11
+    },
+    {
+     "k": 5,
+     "double_mellin_zero": 32.935061582581994,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[1.9792e-11 +/- 7.44e-17]",
+     "F_hi": "[-1.9788e-11 +/- 2.50e-16]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 3.982790749761836e-59,
+     "true_zero": "32.935061587739189691",
+     "abs_diff_double": 5.157197335847741e-09
+    }
+   ]
+  },
+  {
+   "X": 29,
+   "n_basis": 60,
+   "lowest_eig": -1.7504893957783576e-14,
+   "seconds": 0.8,
+   "zeros": [
+    {
+     "k": 1,
+     "double_mellin_zero": 14.134725141734688,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[6.4794e-8 +/- 1.83e-13]",
+     "F_hi": "[-6.4794e-8 +/- 1.84e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 9.957130342809074e-60,
+     "true_zero": "14.134725141734693790",
+     "abs_diff_double": 7.105427357601002e-15
+    },
+    {
+     "k": 2,
+     "double_mellin_zero": 21.022039638771552,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[5.0223e-8 +/- 3.16e-13]",
+     "F_hi": "[-5.0223e-8 +/- 3.15e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425708768818e-59,
+     "true_zero": "21.022039638771554993",
+     "abs_diff_double": 3.552713678800501e-15
+    },
+    {
+     "k": 3,
+     "double_mellin_zero": 25.010857580145665,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-1.0052e-8 +/- 2.06e-13]",
+     "F_hi": "[1.0052e-8 +/- 2.03e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425701350406e-59,
+     "true_zero": "25.010857580145688763",
+     "abs_diff_double": 2.4868995751603507e-14
+    },
+    {
+     "k": 4,
+     "double_mellin_zero": 30.424876125851082,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-4.0495e-10 +/- 1.31e-15]",
+     "F_hi": "[4.0495e-10 +/- 1.40e-16]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.9914257347332612e-59,
+     "true_zero": "30.424876125859513210",
+     "abs_diff_double": 8.430589559793589e-12
+    },
+    {
+     "k": 5,
+     "double_mellin_zero": 32.93506158809996,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[7.1504e-11 +/- 1.07e-16]",
+     "F_hi": "[-7.1508e-11 +/- 4.33e-16]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 3.982790749761836e-59,
+     "true_zero": "32.935061587739189691",
+     "abs_diff_double": 3.6077096865483327e-10
+    }
+   ]
+  },
+  {
+   "X": 37,
+   "n_basis": 60,
+   "lowest_eig": -2.218066337675741e-14,
+   "seconds": 0.8,
+   "zeros": [
+    {
+     "k": 1,
+     "double_mellin_zero": 14.134725141734735,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-5.3422e-9 +/- 1.25e-14]",
+     "F_hi": "[5.3422e-9 +/- 8.46e-15]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 9.957130342809074e-60,
+     "true_zero": "14.134725141734693790",
+     "abs_diff_double": 4.085620730620576e-14
+    },
+    {
+     "k": 2,
+     "double_mellin_zero": 21.022039638771563,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-2.5274e-8 +/- 2.47e-13]",
+     "F_hi": "[2.5274e-8 +/- 2.46e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425708768818e-59,
+     "true_zero": "21.022039638771554993",
+     "abs_diff_double": 7.105427357601002e-15
+    },
+    {
+     "k": 3,
+     "double_mellin_zero": 25.01085758014573,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[4.1596e-9 +/- 3.62e-15]",
+     "F_hi": "[-4.1596e-9 +/- 2.00e-15]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425701350406e-59,
+     "true_zero": "25.010857580145688763",
+     "abs_diff_double": 3.907985046680551e-14
+    },
+    {
+     "k": 4,
+     "double_mellin_zero": 30.42487612374449,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-4.8860e-11 +/- 1.07e-16]",
+     "F_hi": "[4.8857e-11 +/- 1.25e-16]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.9914257347332612e-59,
+     "true_zero": "30.424876125859513210",
+     "abs_diff_double": 2.115022823545587e-09
+    },
+    {
+     "k": 5,
+     "double_mellin_zero": 32.935061617766955,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[2.4091e-11 +/- 3.72e-16]",
+     "F_hi": "[-2.4087e-11 +/- 3.33e-16]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 3.982790749761836e-59,
+     "true_zero": "32.935061587739189691",
+     "abs_diff_double": 3.002776338689728e-08
+    }
+   ]
+  },
+  {
+   "X": 47,
+   "n_basis": 60,
+   "lowest_eig": -2.0668008640969485e-14,
+   "seconds": 0.6,
+   "zeros": [
+    {
+     "k": 1,
+     "double_mellin_zero": 14.134725141734696,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-2.3423e-8 +/- 2.73e-13]",
+     "F_hi": "[2.3423e-8 +/- 2.76e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 9.957130342809074e-60,
+     "true_zero": "14.134725141734693790",
+     "abs_diff_double": 1.7763568394002505e-15
+    },
+    {
+     "k": 2,
+     "double_mellin_zero": 21.022039638771552,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-2.2374e-8 +/- 3.72e-13]",
+     "F_hi": "[2.2374e-8 +/- 3.73e-13]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425708768818e-59,
+     "true_zero": "21.022039638771554993",
+     "abs_diff_double": 3.552713678800501e-15
+    },
+    {
+     "k": 3,
+     "double_mellin_zero": 25.010857580145775,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[3.8139e-9 +/- 3.14e-14]",
+     "F_hi": "[-3.8139e-9 +/- 3.43e-14]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.991425701350406e-59,
+     "true_zero": "25.010857580145688763",
+     "abs_diff_double": 8.526512829121202e-14
+    },
+    {
+     "k": 4,
+     "double_mellin_zero": 30.42487612525745,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[6.3545e-11 +/- 3.46e-17]",
+     "F_hi": "[-6.3544e-11 +/- 1.68e-17]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 1.9914257347332612e-59,
+     "true_zero": "30.424876125859513210",
+     "abs_diff_double": 6.020606235779269e-10
+    },
+    {
+     "k": 5,
+     "double_mellin_zero": 32.93506159797344,
+     "bracket_halfwidth": 1e-07,
+     "F_lo": "[-9.9866e-12 +/- 3.73e-18]",
+     "F_hi": "[9.9883e-12 +/- 1.80e-17]",
+     "zero_certified_in_bracket": true,
+     "true_zero_ball_radius": 3.982790749761836e-59,
+     "true_zero": "32.935061587739189691",
+     "abs_diff_double": 1.0234245451101742e-08
+    }
+   ]
+  }
+ ]
+}

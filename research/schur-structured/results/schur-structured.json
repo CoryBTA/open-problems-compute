@@ -1,0 +1,106 @@
+[
+ {
+  "case": {
+   "n": 4,
+   "k": 2
+  },
+  "expected": "witness",
+  "status": "witness",
+  "verified": true,
+  "matches_expected": true,
+  "seconds": 0.0
+ },
+ {
+  "case": {
+   "n": 5,
+   "k": 2
+  },
+  "expected": "none",
+  "status": "none",
+  "verified": false,
+  "matches_expected": true,
+  "seconds": 0.0
+ },
+ {
+  "case": {
+   "n": 13,
+   "k": 3
+  },
+  "expected": "witness",
+  "status": "witness",
+  "verified": true,
+  "matches_expected": true,
+  "seconds": 0.0
+ },
+ {
+  "case": {
+   "n": 14,
+   "k": 3
+  },
+  "expected": "none",
+  "status": "none",
+  "verified": false,
+  "matches_expected": true,
+  "seconds": 0.0
+ },
+ {
+  "case": {
+   "n": 44,
+   "k": 4
+  },
+  "expected": "witness",
+  "status": "witness",
+  "verified": true,
+  "matches_expected": true,
+  "seconds": 0.06
+ },
+ {
+  "case": {
+   "n": 45,
+   "k": 4
+  },
+  "expected": "none",
+  "status": "none",
+  "verified": false,
+  "matches_expected": true,
+  "seconds": 13.49
+ },
+ {
+  "case": {
+   "n": 44,
+   "k": 4,
+   "symmetric": true
+  },
+  "expected": "witness",
+  "status": "witness",
+  "verified": true,
+  "matches_expected": true,
+  "seconds": 0.0
+ },
+ {
+  "case": {
+   "n": 45,
+   "k": 4,
+   "symmetric": true
+  },
+  "expected": "none",
+  "status": "none",
+  "verified": false,
+  "matches_expected": true,
+  "seconds": 0.48
+ },
+ {
+  "case": {
+   "n": 160,
+   "k": 5,
+   "symmetric": true,
+   "min_depth": 44,
+   "timeout": 1400
+  },
+  "expected": "witness",
+  "status": "witness",
+  "verified": true,
+  "matches_expected": true,
+  "seconds": 0.73
+ }
+]

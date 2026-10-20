@@ -1,0 +1,166 @@
+{
+ "solver": "Glucose4",
+ "trials_per_point": 200,
+ "seed": 12345,
+ "results": {
+  "50": {
+   "rows": [
+    {
+     "alpha": 3.8,
+     "m": 190,
+     "sat_fraction": 0.955,
+     "seconds": 0.2
+    },
+    {
+     "alpha": 4.0,
+     "m": 200,
+     "sat_fraction": 0.85,
+     "seconds": 0.2
+    },
+    {
+     "alpha": 4.1,
+     "m": 205,
+     "sat_fraction": 0.74,
+     "seconds": 0.1
+    },
+    {
+     "alpha": 4.2,
+     "m": 210,
+     "sat_fraction": 0.67,
+     "seconds": 0.3
+    },
+    {
+     "alpha": 4.3,
+     "m": 215,
+     "sat_fraction": 0.52,
+     "seconds": 0.2
+    },
+    {
+     "alpha": 4.4,
+     "m": 220,
+     "sat_fraction": 0.425,
+     "seconds": 0.2
+    },
+    {
+     "alpha": 4.5,
+     "m": 225,
+     "sat_fraction": 0.315,
+     "seconds": 0.2
+    },
+    {
+     "alpha": 4.7,
+     "m": 235,
+     "sat_fraction": 0.17,
+     "seconds": 0.2
+    }
+   ],
+   "alpha_half": 4.321052631578947
+  },
+  "100": {
+   "rows": [
+    {
+     "alpha": 3.8,
+     "m": 380,
+     "sat_fraction": 0.99,
+     "seconds": 0.3
+    },
+    {
+     "alpha": 4.0,
+     "m": 400,
+     "sat_fraction": 0.945,
+     "seconds": 0.4
+    },
+    {
+     "alpha": 4.1,
+     "m": 410,
+     "sat_fraction": 0.785,
+     "seconds": 0.5
+    },
+    {
+     "alpha": 4.2,
+     "m": 420,
+     "sat_fraction": 0.675,
+     "seconds": 0.6
+    },
+    {
+     "alpha": 4.3,
+     "m": 430,
+     "sat_fraction": 0.51,
+     "seconds": 0.6
+    },
+    {
+     "alpha": 4.4,
+     "m": 440,
+     "sat_fraction": 0.355,
+     "seconds": 0.6
+    },
+    {
+     "alpha": 4.5,
+     "m": 450,
+     "sat_fraction": 0.16,
+     "seconds": 0.6
+    },
+    {
+     "alpha": 4.7,
+     "m": 470,
+     "sat_fraction": 0.05,
+     "seconds": 0.6
+    }
+   ],
+   "alpha_half": 4.306451612903226
+  },
+  "150": {
+   "rows": [
+    {
+     "alpha": 3.8,
+     "m": 570,
+     "sat_fraction": 1.0,
+     "seconds": 0.8
+    },
+    {
+     "alpha": 4.0,
+     "m": 600,
+     "sat_fraction": 0.975,
+     "seconds": 2.0
+    },
+    {
+     "alpha": 4.1,
+     "m": 615,
+     "sat_fraction": 0.855,
+     "seconds": 3.3
+    },
+    {
+     "alpha": 4.2,
+     "m": 630,
+     "sat_fraction": 0.71,
+     "seconds": 4.5
+    },
+    {
+     "alpha": 4.3,
+     "m": 645,
+     "sat_fraction": 0.44,
+     "seconds": 5.2
+    },
+    {
+     "alpha": 4.4,
+     "m": 660,
+     "sat_fraction": 0.225,
+     "seconds": 5.5
+    },
+    {
+     "alpha": 4.5,
+     "m": 675,
+     "sat_fraction": 0.075,
+     "seconds": 4.8
+    },
+    {
+     "alpha": 4.7,
+     "m": 705,
+     "sat_fraction": 0.01,
+     "seconds": 3.3
+    }
+   ],
+   "alpha_half": 4.277777777777778
+  }
+ }
+}

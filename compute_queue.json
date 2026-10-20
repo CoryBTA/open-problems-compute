@@ -1,0 +1,4 @@
+{
+  "_doc": "Jobs for the always-on VM worker (scripts/vm/vm_worker.py), in order. A job is skipped once its result file (ci_run_job.RESULTS) exists on origin/results or origin/cloud. Add a job: implement it in scripts/ci_run_job.py, add it to RESULTS, list it here.",
+  "jobs": ["ns_tg5_n128", "ns_kida_n192"]
+}

@@ -1,0 +1,8 @@
+numpy
+scipy
+mpmath
+python-flint
+python-sat
+pytest
+pytest-timeout
+pytest-xdist

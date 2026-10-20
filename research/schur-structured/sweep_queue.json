@@ -1,0 +1,10 @@
+{
+  "note": "Untried variants only (n=537..600 with the full 160-prefix is already negative, see README). Each item runs once; its result lands on branch results as schur/n<N>-p<PREFIX>.json. Add items to keep the loop busy.",
+  "items": [
+    {"n": 537, "prefix": 140},
+    {"n": 537, "prefix": 100},
+    {"n": 537, "prefix": 80},
+    {"n": 538, "prefix": 120},
+    {"n": 538, "prefix": 100}
+  ]
+}

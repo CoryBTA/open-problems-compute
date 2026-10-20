@@ -1,0 +1,109 @@
+name: schur-sweep
+# Sharded version of research/schur-structured/sweep.sh. Calibration first: the known S(6) >= 536 witness must be found
+# (n=536 is SAT, with the same prefix as the sweep) before any larger n is trusted. The label is
+# `negative (this class only)` only if every shard finished with no timeout; otherwise `inconclusive`.
+# Nothing here is a new theorem, see the README's "Not claimed". Started by continuous-research.yml from sweep_queue.json.
+on:
+  workflow_dispatch:
+    inputs:
+      n:
+        description: "value of n to test (537 and up); calibration at n=536 always runs first"
+        required: true
+        default: "537"
+      prefix:
+        description: "keep only the first m entries of each 5-set base (160 = the full base)"
+        required: false
+        default: "160"
+      budget:
+        description: "conflict budget per start"
+        required: false
+        default: "100000"
+permissions:
+  contents: read
+concurrency:
+  group: schur-sweep
+  cancel-in-progress: false
+jobs:
+  calibrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install python-sat pytest pytest-timeout
+      - name: known answers (S(4), S(5)=160, verifier, shard coverage)
+        run: python -m pytest tests/unit/test_schur_structured.py -p no:cacheprovider --timeout=600 -q
+      - name: n=536 must be SAT and verified (Fredricksen and Sweet 2000), same prefix as the sweep
+        working-directory: research/schur-structured
+        env:
+          PREFIX: ${{ github.event.inputs.prefix }}
+        run: |
+          python run6b.py 536 --parts 100000 --multiply --workers 4 --budget 100000 --prefix "$PREFIX" | tee gate.log
+          grep -q "WITNESS 536 verified" gate.log
+  sweep:
+    needs: calibrate
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python -m pip install python-sat
+      - name: run shard
+        working-directory: research/schur-structured
+        env:
+          N: ${{ github.event.inputs.n }}
+          PREFIX: ${{ github.event.inputs.prefix }}
+          BUDGET: ${{ github.event.inputs.budget }}
+        run: |
+          mkdir -p out
+          python run6b.py "$N" --parts 100000 --multiply --workers 4 --budget "$BUDGET" --prefix "$PREFIX" --shard ${{ matrix.shard }}/16 --summary out/shard-${{ matrix.shard }}.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shard-${{ matrix.shard }}
+          path: research/schur-structured/out/
+          if-no-files-found: warn
+  merge:
+    needs: sweep
+    if: always() && needs.calibrate.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      N: ${{ github.event.inputs.n }}
+      PREFIX: ${{ github.event.inputs.prefix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - uses: actions/download-artifact@v4
+        with: {path: shards}
+      - name: merge and label (exit 1 from the merge just means inconclusive)
+        run: |
+          python research/schur-structured/merge_shards.py shards 16 "$N" result.json | tee -a "$GITHUB_STEP_SUMMARY" || true
+          python research/schur-structured/merge_shards.py --finish result.json "$N" "$PREFIX" "$GITHUB_RUN_ID"
+      - name: append the result to branch results (never main, never forced)
+        run: |
+          git config user.name "research-actions"
+          git config user.email "research-actions@users.noreply.github.com"
+          name="n${N}-p${PREFIX}.json"
+          cp result.json "$RUNNER_TEMP/$name"
+          git fetch origin results || true
+          if git rev-parse -q --verify origin/results >/dev/null; then git checkout -q -B results origin/results
+          else git checkout -q --orphan results && git rm -rqf . ; fi
+          mkdir -p schur && cp "$RUNNER_TEMP/$name" "schur/$name"
+          label=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['label'])" "schur/$name")
+          git add schur
+          git commit -qm "schur-sweep n=${N} prefix=${PREFIX}: ${label}"
+          git push origin results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: schur-sweep-result
+          path: result.json

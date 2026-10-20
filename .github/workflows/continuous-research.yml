@@ -1,0 +1,93 @@
+name: continuous-research
+# The loop that keeps Actions working: every 6 hours, start the next unfinished Millennium job of compute_queue.json, else the
+# next item of research/schur-structured/sweep_queue.json (one workflow at a time across both) and raise an issue when a sweep fails or the queue runs
+# dry. Finished items are read from branch `results`. A private repo is skipped unless the variable ALLOW_PRIVATE_SWEEP=1
+# (16 shards would burn the free minutes). Scheduled workflows run from the default branch only, and GitHub pauses them
+# in a public repo after 60 days without repository activity: the results pushes count as activity, an empty queue does not.
+on:
+  schedule:
+    - cron: "11 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: write
+  issues: write
+jobs:
+  drive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: gate on public repo
+        id: gate
+        run: |
+          if [ "${{ github.event.repository.private }}" = "true" ] && [ "${{ vars.ALLOW_PRIVATE_SWEEP }}" != "1" ]; then
+            echo "private repo and ALLOW_PRIVATE_SWEEP unset: not dispatching"
+            echo "go=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=yes" >> "$GITHUB_OUTPUT"
+          fi
+      - name: alarm on a failed millennium job (one open issue per kind)
+        if: steps.gate.outputs.go == 'yes'
+        run: |
+          last=$(gh run list -R "$REPO" --workflow millennium-compute.yml --limit 5 --json conclusion,databaseId,status --jq '[.[] | select(.status=="completed")][0] // empty')
+          concl=$(echo "$last" | jq -r '.conclusion // empty')
+          id=$(echo "$last" | jq -r '.databaseId // empty')
+          if [ -n "$concl" ] && [ "$concl" != "success" ]; then
+            title="millennium-compute ended $concl"
+            open=$(gh issue list -R "$REPO" --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+            if [ -z "$open" ]; then
+              gh issue create -R "$REPO" --title "$title" --body "Run https://github.com/$REPO/actions/runs/$id ended $concl. A job that stopped at its budget exits 75 and re-dispatches itself; anything else is a real failure."
+            fi
+          fi
+      - name: alarm on a failed sweep (one open issue per kind)
+        if: steps.gate.outputs.go == 'yes'
+        run: |
+          last=$(gh run list -R "$REPO" --workflow schur-sweep.yml --limit 5 --json conclusion,databaseId,status --jq '[.[] | select(.status=="completed")][0] // empty')
+          concl=$(echo "$last" | jq -r '.conclusion // empty')
+          id=$(echo "$last" | jq -r '.databaseId // empty')
+          if [ -n "$concl" ] && [ "$concl" != "success" ]; then
+            title="schur-sweep ended $concl"
+            open=$(gh issue list -R "$REPO" --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+            if [ -z "$open" ]; then
+              gh issue create -R "$REPO" --title "$title" --body "Run https://github.com/$REPO/actions/runs/$id ended $concl. Either the calibration gate failed (the search code changed behaviour) or a shard timed out."
+            fi
+          fi
+      - name: start the next unfinished item
+        if: steps.gate.outputs.go == 'yes'
+        run: |
+          busy=0
+          for wf in schur-sweep.yml millennium-compute.yml; do
+            c=$(gh run list -R "$REPO" --workflow "$wf" --json status --jq '[.[] | select(.status!="completed")] | length')
+            busy=$((busy + c))
+          done
+          if [ "$busy" != "0" ]; then echo "a sweep is running: nothing to start"; exit 0; fi
+          git fetch -q origin results 2>/dev/null || true
+          mjob=$(python3 scripts/ci_next_job.py)
+          if [ -n "$mjob" ]; then
+            echo "dispatching millennium job $mjob"
+            gh workflow run millennium-compute.yml -R "$REPO" -f job="$mjob" -f attempt=1
+            exit 0
+          fi
+          done_files=$(git ls-tree -r --name-only origin/results schur/ 2>/dev/null || true)
+          next=""
+          for it in $(jq -c '.items[]' research/schur-structured/sweep_queue.json); do
+            n=$(echo "$it" | jq -r .n)
+            p=$(echo "$it" | jq -r .prefix)
+            if ! echo "$done_files" | grep -qx "schur/n${n}-p${p}.json"; then next="$it"; break; fi
+          done
+          if [ -z "$next" ]; then
+            title="sweep queue is empty"
+            open=$(gh issue list -R "$REPO" --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+            if [ -z "$open" ]; then
+              gh issue create -R "$REPO" --title "$title" --body "Every item of research/schur-structured/sweep_queue.json has a result on branch results. Add items to keep the loop running."
+            fi
+            exit 0
+          fi
+          n=$(echo "$next" | jq -r .n)
+          p=$(echo "$next" | jq -r .prefix)
+          echo "dispatching n=$n prefix=$p"
+          gh workflow run schur-sweep.yml -R "$REPO" -f n="$n" -f prefix="$p"

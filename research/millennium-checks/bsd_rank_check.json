@@ -1,0 +1,56 @@
+{
+  "11a": {
+    "N": 11,
+    "known_rank": 0,
+    "root_number": 1,
+    "terms": 59,
+    "hasse_weil_ok_for_all_good_p<=nmax": true,
+    "order_estimates": [
+      0.00022088460629962546,
+      0.0008835164349796963
+    ],
+    "estimated_rank": 0,
+    "parity_matches_root_number": true
+  },
+  "37a": {
+    "N": 37,
+    "known_rank": 1,
+    "root_number": -1,
+    "terms": 92,
+    "hasse_weil_ok_for_all_good_p<=nmax": true,
+    "order_estimates": [
+      1.0003282531426625,
+      1.0013129573632913
+    ],
+    "estimated_rank": 1,
+    "parity_matches_root_number": true
+  },
+  "389a": {
+    "N": 389,
+    "known_rank": 2,
+    "root_number": 1,
+    "terms": 256,
+    "hasse_weil_ok_for_all_good_p<=nmax": true,
+    "order_estimates": [
+      2.0007046607858956,
+      2.0028182365762572
+    ],
+    "estimated_rank": 2,
+    "parity_matches_root_number": true
+  },
+  "5077a": {
+    "N": 5077,
+    "known_rank": 3,
+    "root_number": -1,
+    "terms": 875,
+    "hasse_weil_ok_for_all_good_p<=nmax": true,
+    "order_estimates": [
+      3.0012566109780487,
+      3.005024939827973
+    ],
+    "estimated_rank": 3,
+    "parity_matches_root_number": true
+  },
+  "11a_L1": 0.2538418608559107,
+  "11a_L1_over_Omega": 0.2
+}
